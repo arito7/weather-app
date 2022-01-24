@@ -11,9 +11,13 @@ html,
 body {
   font-family: ubuntu, Geneva, Tahoma, sans-serif;
   height: 100%;
+  background-image: url(./imgs/sunny.png);
+  background-repeat: no-repeat;
   background-color: #bbbbbb;
+  background-size: cover;
   width: 100%;
   padding: 0;
+  color: #fefefe;
   margin: 0;
 }
 
@@ -68,5 +72,56 @@ button.selected {
 }
 
 .weather-info {
-  padding: 5%;
+  padding: 1%;
+  margin: 0;
+}
+
+.weather-icon {
+  font-size: 4em;
+  margin: 16px 0;
+}
+
+.daily-weather-container {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+}
+
+.hoverable {
+  cursor: pointer;
+}
+.day-card {
+  text-align: center;
+  padding: 22px 16px 16px 16px;
+  border-radius: 4px;
+  width: 13%;
+  justify-items: center;
+  background-color: #87878766;
+  color: #fefefe;
+  animation-name: dayCard;
+  animation-duration: 500ms;
+}
+
+@keyframes dayCard {
+  0% {
+    opacity: 0;
+    background-color: inherit;
+  }
+  100% {
+    opacity: 1;
+    background-color: #87878766;
+  }
+}
+.day {
+  margin: 0;
+}
+.weather {
+  font-size: 1.1em;
+}
+.temperature {
+  font-size: 1.3em;
+  margin: 0;
 }

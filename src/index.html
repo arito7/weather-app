@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/weather-icons-wind.min.css">
-    <link rel="stylesheet" href="./css/weather-icons.min.css">
-    <link rel="stylesheet" href="index.css">
-    <script src="./index.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/weather-icons-wind.css" />
+    <link rel="stylesheet" href="./css/weather-icons.css" />
+    <link rel="stylesheet" href="index.css" />
+    <!-- <script src="components/weather-card.js" type="module"></script> -->
+    <script type="module" src="index.js" defer></script>
     <title>Weather App</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="input-container">
-        <input class="input" type="text" placeholder="City">
-        <button class="search-button">Search</button>
+      <input class="input" type="text" placeholder="City" />
+      <button class="search-button">Search</button>
     </div>
     <div class="unit-container">
-        <button class="unit-button selected">C</button>
-        <button class="unit-button">Kelvin</button>
-        <button class="unit-button">F</button>
+      <button class="unit-button selected">C</button>
+      <button class="unit-button">F</button>
     </div>
     <div class="weather-info">
-        <h2 class="font-large">Tokyo</h2>
-        <h4 class="font-large">79°</h4>
-        <p>High 82°</p>
-        <p>Low: 69°</p>
+      <h2 class="font-large current-city">Tokyo</h2>
+      <h4 class="font-large selected-temp">79°</h4>
+      <h3 class="font-large weather">Sunny</h3>
+      <p class="temp-high">High 82°</p>
+      <p class="temp-low">Low: 69°</p>
+      <i class="wi wi-humidity"></i><span class="humidity"> Humidity 40%</span>
+      <p class="feels-like">Feels like 70</p>
     </div>
-</body>
+
+    <div class="daily-weather-container"></div>
+    </div>
+  </body>
 </html>
