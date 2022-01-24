@@ -11,16 +11,20 @@ html,
 body {
   font-family: ubuntu, Geneva, Tahoma, sans-serif;
   height: 100%;
-  background-image: url(./imgs/sunny.png);
+  background-image: url(./imgs/snowy.jpg);
   background-repeat: no-repeat;
   background-color: #bbbbbb;
   background-size: cover;
   width: 100%;
   padding: 0;
-  color: #fefefe;
+  color: #343434;
   margin: 0;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
 button {
   cursor: pointer;
   padding: 8px 16px;
@@ -89,9 +93,21 @@ input:focus {
   font-size: 3em;
 }
 
+.font-medium {
+  font-size: 2em;
+}
+
 .weather-info {
-  padding: 1%;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin: 0;
+  align-items: center;
+  gap: 32px;
+}
+.weather-info > .grid-right {
+  text-align: end;
+  grid-column: -1;
 }
 
 .weather-icon {
@@ -113,12 +129,11 @@ input:focus {
 }
 .day-card {
   text-align: center;
-  padding: 22px 16px 16px 16px;
+  padding: 22px 8px 16px 8px;
   border-radius: 4px;
   width: 13%;
   justify-items: center;
   background-color: #87878766;
-  color: #fefefe;
   animation-name: fadeIn;
   animation-duration: 500ms;
 }
@@ -135,9 +150,7 @@ input:focus {
 }
 .day {
   margin: 0;
-}
-.weather {
-  font-size: 1.1em;
+  overflow: hidden;
 }
 .temperature {
   font-size: 1.3em;

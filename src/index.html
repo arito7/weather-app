@@ -17,9 +17,7 @@
       <div class="input-field">
         <input class="input" type="text" placeholder="City" />
         <button class="search-button">Search</button>
-        <div class="error-msg">
-          <p>Error</p>
-        </div>
+        <div class="error-msg"></div>
       </div>
     </div>
 
@@ -28,13 +26,18 @@
       <button class="unit-button">F</button>
     </div>
     <div class="weather-info">
-      <h2 class="font-large current-city">Tokyo</h2>
-      <h4 class="font-large selected-temp">79°</h4>
-      <h3 class="font-large weather">Sunny</h3>
-      <p class="temp-high">High 82°</p>
-      <p class="temp-low">Low: 69°</p>
-      <i class="wi wi-humidity"></i><span class="humidity"> Humidity 40%</span>
-      <p class="feels-like">Feels like 70</p>
+      <p class="grid-left font-large current-city">Tokyo</p>
+      <p class="grid-right font-large selected-temp">79°</p>
+      <p class="grid-left font-large weather">Sunny</p>
+      <p class="grid-right font-medium temp-high">High 82°</p>
+      <p class="grid-left font-medium">
+        <i class="wi wi-humidity"></i><span class="humidity"> Humidity 40%</span>
+      </p>
+      <p class="grid-right font-medium temp-low">Low: 69°</p>
+      <p class="grid-left font-medium">
+        <i class="wi wi-barometer"></i><span class="pressure"></span>
+      </p>
+      <p class="grid-right font-medium feels-like">Feels like 70</p>
     </div>
 
     <div class="daily-weather-container"></div>

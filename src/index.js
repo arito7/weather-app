@@ -23,6 +23,8 @@ import WeatherCard from './components/weather-card.js';
   const nodesUnitBtns = document.querySelectorAll('.unit-button');
   const nodeWeather = document.querySelector('.weather');
   const nodeErrorMsg = document.querySelector('.error-msg');
+  const nodeFeelsLike = document.querySelector('.feels-like');
+  const nodePressure = document.querySelector('.pressure');
 
   document.addEventListener('keydown', (e) => {
     if (
@@ -57,9 +59,10 @@ import WeatherCard from './components/weather-card.js';
         data = await data.json();
         return data;
       } catch (error) {
-        console.error('this is an error in getWeather', error);
+        console.error(error);
       }
     }
+
     function render(city, data, dailyData) {
       const day = new Date().getDay();
       while (dailyWeatherContainer.hasChildNodes()) {
@@ -71,17 +74,19 @@ import WeatherCard from './components/weather-card.js';
       }
       currentCity.textContent = city;
       nodeWeather.textContent = data.weather[0].main;
-      selectedTemp.textContent = `${data.main.temp}°C`;
-      selectedHigh.textContent = `High ${data.main.temp_max}°C`;
-      selectedLow.textContent = `Low ${data.main.temp_min}°C`;
-      humidity.textContent = ` Humidity ${data.main.humidity}`;
+      selectedTemp.textContent = `${data.main.temp}°${states.symbol}`;
+      selectedHigh.textContent = `High ${data.main.temp_max}°${states.symbol}`;
+      selectedLow.textContent = `Low ${data.main.temp_min}°${states.symbol}`;
+      humidity.textContent = `  Humidity ${data.main.humidity}`;
+      nodePressure.textContent = `  Pressure ${data.main.pressure} hPa`;
+      nodeFeelsLike.textContent = `Feels like ${data.main.feels_like}°${states.symbol}`;
     }
 
     function uppercaseFirstLetter(s) {
       return s.charAt(0).toUpperCase() + s.slice(1);
     }
 
-    let weather = await getWeather(city);
+    const weather = await getWeather(city);
     console.log(weather);
     if (weather.cod !== 200) {
       console.log(weather.message);
@@ -90,7 +95,7 @@ import WeatherCard from './components/weather-card.js';
     } else {
       nodeErrorMsg.style.display = 'none';
     }
-    let dailyWeather = await getDetailedWeather(
+    const dailyWeather = await getDetailedWeather(
       weather.coord.lat,
       weather.coord.lon
     );
@@ -100,9 +105,11 @@ import WeatherCard from './components/weather-card.js';
 
   function unitBtnClickHandler(e) {
     nodesUnitBtns.forEach((btn) => {
-      btn.classList.toggle(CSS.selected);
+      btn.classList.remove(CSS.selected);
     });
+    e.target.classList.add(CSS.selected);
     states.unit = UNITS[e.target.textContent];
+    states.symbol = e.target.textContent;
     if (nodeInputField.value) {
       getWeatherAndRender(nodeInputField.value);
     }
