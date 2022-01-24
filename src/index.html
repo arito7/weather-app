@@ -12,10 +12,17 @@
     <title>Weather App</title>
   </head>
   <body>
+    
     <div class="input-container">
-      <input class="input" type="text" placeholder="City" />
-      <button class="search-button">Search</button>
+      <div class="input-field">
+        <input class="input" type="text" placeholder="City" />
+        <button class="search-button">Search</button>
+        <div class="error-msg">
+          <p>Error</p>
+        </div>
+      </div>
     </div>
+
     <div class="unit-container">
       <button class="unit-button selected">C</button>
       <button class="unit-button">F</button>

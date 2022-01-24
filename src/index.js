@@ -22,7 +22,17 @@ import WeatherCard from './components/weather-card.js';
   const nodeInputField = document.querySelector('.input');
   const nodesUnitBtns = document.querySelectorAll('.unit-button');
   const nodeWeather = document.querySelector('.weather');
+  const nodeErrorMsg = document.querySelector('.error-msg');
 
+  document.addEventListener('keydown', (e) => {
+    if (
+      e.code === 'Enter' &&
+      document.activeElement === nodeInputField &&
+      nodeInputField.value
+    ) {
+      getWeatherAndRender(nodeInputField.value);
+    }
+  });
   // FUNCTIONS
   // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
   async function getWeatherAndRender(city) {
@@ -35,7 +45,7 @@ import WeatherCard from './components/weather-card.js';
         data = await data.json();
         return data;
       } catch (error) {
-        console.error(error);
+        console.error('this is an error', error);
       }
     }
 
@@ -46,8 +56,8 @@ import WeatherCard from './components/weather-card.js';
         );
         data = await data.json();
         return data;
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error('this is an error in getWeather', error);
       }
     }
     function render(city, data, dailyData) {
@@ -67,8 +77,19 @@ import WeatherCard from './components/weather-card.js';
       humidity.textContent = ` Humidity ${data.main.humidity}`;
     }
 
+    function uppercaseFirstLetter(s) {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
     let weather = await getWeather(city);
     console.log(weather);
+    if (weather.cod !== 200) {
+      console.log(weather.message);
+      nodeErrorMsg.textContent = uppercaseFirstLetter(weather.message);
+      nodeErrorMsg.style.display = 'block';
+    } else {
+      nodeErrorMsg.style.display = 'none';
+    }
     let dailyWeather = await getDetailedWeather(
       weather.coord.lat,
       weather.coord.lon
