@@ -21,7 +21,7 @@ export default (dayIndex, dayData) => {
   container.classList.add('day-card');
   day.classList.add('day');
   weather.classList.add('weather');
-  temp.classList.add('temperature');
+  temp.classList.add('temperature', 'font-medium');
 
   day.textContent = DAYS[dayIndex];
   weather.textContent = dayData.weather[0].main;

@@ -1,3 +1,13 @@
+:root {
+  --error: #f09090;
+  --primary: #454545;
+  --secondary: #fefefe;
+  --button: #898989;
+  --button-selected: #676767;
+  --button-hover: #787878;
+  --anim-dur: 400ms;
+}
+
 @font-face {
   font-family: ubuntu;
   src: url(./fonts/Ubuntu-Regular.ttf);
@@ -7,135 +17,141 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  font-family: ubuntu, Geneva, Tahoma, sans-serif;
-  height: 100%;
-  background-image: url(./imgs/snowy.jpg);
-  background-repeat: no-repeat;
-  background-color: #bbbbbb;
-  background-size: cover;
-  width: 100%;
-  padding: 0;
-  color: #343434;
-  margin: 0;
-}
-
+body,
+h4,
+h2,
 p {
   margin: 0;
   padding: 0;
 }
+html,
+body {
+  font-family: ubuntu, Geneva, Tahoma, sans-serif;
+  height: 100vh;
+  background-image: url(./imgs/690190.png);
+  background-repeat: no-repeat;
+  background-color: #bbbbbb;
+  background-size: cover;
+  width: 100%;
+  color: var(--primary);
+}
+
 button {
   cursor: pointer;
-  padding: 8px 16px;
+  padding: 0.8rem 1.5rem;
   font-size: 1.2em;
+  color: var(--secondary);
   border: none;
-  background-color: #898989;
+  background-color: var(--button);
   transition-property: background-color;
   transition-timing-function: ease-in-out;
-  transition-duration: 400ms;
+  transition-duration: var(--anim-dur);
 }
+
 button:hover {
-  background-color: #787878;
+  background-color: var(--button-hover);
 }
+
 button.selected {
-  background-color: #676767;
+  background-color: var(--button-selected);
 }
+
 input:focus {
   outline: none;
 }
-.input-container {
-  text-align: center;
-}
 
-.input-field {
+.container {
   display: grid;
-  width: auto;
-  align-items: stretch;
-  padding: 16px;
-  justify-content: center;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
 }
 
-.search-button {
-  grid-column: 2;
+.search-container {
+  padding: 1rem;
+  justify-self: center;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  width: min(800px, 100%);
+  grid-template-columns: 1fr auto;
+  grid-template-rows: repeat(2, auto);
 }
+
 .error-msg {
-  background-color: #aa2323;
+  background-color: var(--error);
   display: none;
   grid-column: span 2;
-  padding: 16px 8px;
+  padding: 1rem;
   animation-name: fadeIn;
-  animation-duration: 500ms;
+  animation-duration: 300ms;
 }
+
+.units-container {
+  margin-top: 1rem; /*Push down from search bar and error msg*/
+  grid-column: span 2;
+}
+
 .input {
   border: none;
   background-color: #343434;
-  font-size: 1.2em;
-  color: #fefefe;
-  padding: 16px 32px;
-}
-
-.info-container {
-  display: grid;
-  justify-content: center;
-}
-
-.temp {
-  font-size: 5em;
-}
-
-.unit-container {
-  display: flex;
-  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--secondary);
+  padding: 1rem 2rem;
 }
 
 .font-large {
-  font-size: 3em;
+  font-size: 3rem;
+}
+
+.font-xlarge {
+  font-size: 5rem;
 }
 
 .font-medium {
-  font-size: 2em;
+  font-size: 2rem;
 }
 
-.weather-info {
-  padding: 32px;
+.weather-info-container {
+  padding: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0;
+  grid-auto-rows: auto;
   align-items: center;
-  gap: 32px;
+  gap: 2rem;
+  align-content: center;
 }
-.weather-info > .grid-right {
-  text-align: end;
-  grid-column: -1;
+
+.weather-info-container > *:nth-child(even) {
+  justify-self: end;
+}
+
+/*****************/
+/* DAILY WEATHER */
+/*****************/
+
+.daily-weather-container {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  color: var(--secondary);
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.day-card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.6rem;
+  padding: 1.5rem 1rem;
+  justify-items: center;
+  background-color: #343434aa;
+  animation-name: fadeIn;
+  animation-duration: var(--anim-dur);
 }
 
 .weather-icon {
-  font-size: 4em;
-  margin: 16px 0;
-}
-
-.daily-weather-container {
-  padding: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  gap: 8px;
-}
-
-.hoverable {
-  cursor: pointer;
-}
-.day-card {
-  text-align: center;
-  padding: 22px 8px 16px 8px;
-  border-radius: 4px;
-  width: 13%;
-  justify-items: center;
-  background-color: #87878766;
-  animation-name: fadeIn;
-  animation-duration: 500ms;
+  font-size: 4rem;
+  margin: 1rem;
 }
 
 @keyframes fadeIn {
@@ -147,12 +163,4 @@ input:focus {
     opacity: 1;
     background-color: #87878766;
   }
-}
-.day {
-  margin: 0;
-  overflow: hidden;
-}
-.temperature {
-  font-size: 1.3em;
-  margin: 0;
 }

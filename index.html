@@ -12,35 +12,41 @@
     <title>Weather App</title>
   </head>
   <body>
-    
-    <div class="input-container">
-      <div class="input-field">
-        <input class="input" type="text" placeholder="City" />
-        <button class="search-button">Search</button>
-        <div class="error-msg"></div>
+    <div class="container">
+      <div class="search-container">
+          <input class="input" type="text" placeholder="City" />
+          <button class="search-button">Search</button>
+          <div class="error-msg"></div>
+          <div class="units-container">
+            <button class="unit-button selected">C</button>
+            <button class="unit-button">F</button>
+          </div>
       </div>
-    </div>
 
-    <div class="unit-container">
-      <button class="unit-button selected">C</button>
-      <button class="unit-button">F</button>
-    </div>
-    <div class="weather-info">
-      <p class="grid-left font-large current-city">Tokyo</p>
-      <p class="grid-right font-large selected-temp">79°</p>
-      <p class="grid-left font-large weather">Sunny</p>
-      <p class="grid-right font-medium temp-high">High 82°</p>
-      <p class="grid-left font-medium">
-        <i class="wi wi-humidity"></i><span class="humidity"> Humidity 40%</span>
-      </p>
-      <p class="grid-right font-medium temp-low">Low: 69°</p>
-      <p class="grid-left font-medium">
-        <i class="wi wi-barometer"></i><span class="pressure"></span>
-      </p>
-      <p class="grid-right font-medium feels-like">Feels like 70</p>
-    </div>
+      <div class="weather-info-container">
+        <p class="font-xlarge current-city"></p>
+        
+        <p class="font-xlarge selected-temp"></p>
+        
+        <p class="font-large weather"></p>
+        
+        <p class="font-medium temp-high"></p>
+        
+        <p class="font-medium humidity-container">
+          <i class="wi wi-humidity"></i><span class="humidity"></span>
+        </p>
 
-    <div class="daily-weather-container"></div>
+        <p class="font-medium temp-low"></p>
+
+        <p class="font-medium pressure-container">
+          <i class="wi wi-barometer"></i><span class="pressure"></span>
+        </p>
+        
+        <p class="font-medium feels-like"></p>
+      </div>
+
+      <div class="daily-weather-container"></div>
+      </div>
     </div>
   </body>
 </html>
